@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arami Drinks & Juice Bar - Fresh, Natural, Refreshing</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,300;0,400;0,600;1,300&family=Nunito+Sans:wght@300;400;600&display=swap">
+    <style>
+        :root {
+            --color-primary: #233416;
+            --color-accent: #64a624;
+            --color-bg: #F0F8EA;
+            --color-text: #202E14;
+            --color-surface: #243b1c;
+            --color-secondary-accent: #c2612e;
+            --font-display: 'Josefin Slab', serif;
+            --font-body: 'Nunito Sans', sans-serif;
+            --border-radius: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(240, 248, 234, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(35, 52, 22, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-text);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 300px;
+            height: calc(100vh - 70px);
+            background: var(--color-bg);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 999;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu ul a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu ul a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--color-accent);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(100, 166, 36, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--color-secondary-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(100, 166, 36, 0.4);
+        }
+
+        /* Section Base */
+        section {
+            padding: 80px 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.1s;
+        }
+
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(35, 52, 22, 0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+        }
+
+        /* Services Section */
+        #services {
+            background: var(--color-bg);
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        #services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(35, 52, 22, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(35, 52, 22, 0.15);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--color-surface);
+            color: white;
+            text-align: center;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        #contact p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-accent);
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .about-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-content h2,
+            #services h2,
+            #contact h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 48px 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-item {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.75rem;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Arami Drinks</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/3794784/pexels-photo-3794784.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Fresh tropical fruits and juices">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Arami Drinks & Juice Bar</h1>
+            <p class="tagline">Fresh, Natural, Refreshing - Crafted Daily in Eleme</p>
+            <p>Welcome to Arami Drinks & Juice Bar - Where Every Sip Tells a Story of Freshness. Located at Kembere Junction Ekara Onne, Eleme, we craft premium natural drinks and fresh juices that refresh your body and delight your taste buds. Experience the perfect blend of quality, taste, and nutrition in every bottle.</p>
+            <a href="#contact" class="cta-button">Visit Us Today</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-split">
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/31305909/pexels-photo-31305909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Arami beverage production facility">
+                </div>
+                <div class="about-content">
+                    <h2>About Us</h2>
+                    <p>Arami Drinks & Juice Bar is a trusted beverage manufacturer in Eleme, Rivers State, dedicated to bringing you the finest selection of natural drinks and freshly squeezed juices. From our facility at Kembere Junction Ekara Onne, we source quality local fruits and ingredients to create beverages that are not just delicious, but nutritious. Our commitment is simple: no artificial preservatives, no added sugars unless requested, just pure goodness in every bottle. Whether you're looking for a quick refreshment or bulk orders for events and retail, Arami is your go-to destination for quality you can taste.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Products & Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Fresh Fruit Juices</h3>
+                    <p>Made-to-order or bottled fresh - orange, pineapple, watermelon, mixed fruit blends, and seasonal specials. Every juice is squeezed fresh daily.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Natural Drinks</h3>
+                    <p>Our signature drink blends combine traditional Nigerian flavors with modern taste preferences. Refreshing zobo, ginger drinks, chapman, and more.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Bulk Manufacturing</h3>
+                    <p>We supply restaurants, hotels, supermarkets, and event centers across Eleme and Port Harcourt with consistent quality beverages at competitive prices.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Custom Blends</h3>
+                    <p>Have a specific taste in mind? We create custom juice blends for corporate events, weddings, and special occasions.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Retail & Wholesale</h3>
+                    <p>Walk into our bar for a quick refreshing drink or place bulk orders for your business needs. Flexible pricing for all order sizes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Visit Us Today</h2>
+            <p>Ready to taste the Arami difference? Visit our juice bar at Kembere Junction Ekara Onne, Eleme, or call us to place your order. We're open daily and ready to serve you the freshest drinks in town. For bulk orders, corporate inquiries, or custom blends, reach out and let's create something refreshing together. Same-day delivery available for orders within Eleme and environs.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <a href="tel:+2348039728284">+234 803 972 8284</a>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <a href="mailto:info@aramidrinks.ng">info@aramidrinks.ng</a>
+                </div>
+                <div class="contact-item">
+                    <h3>Address</h3>
+                    <p>Kembere Junction Ekara Onne, Eleme, Rivers State, Nigeria</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Arami Drinks & Juice Bar. All rights reserved.</p>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2348039728284" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.828.736 5.484 2.016 7.792L0 32l8.424-2.016C10.732 31.264 13.388 32 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.344c-2.484 0-4.828-.688-6.828-1.844l-.484-.296-5.172 1.236 1.236-5.172-.296-.484C2.688 20.828 2 18.484 2 16 2 8.28 8.28 2 16 2s14 6.28 14 14-6.28 13.344-14 13.344zm7.656-10.656c-.422-.212-2.484-1.234-2.876-1.376-.39-.14-.672-.212-.954.212-.282.422-1.094 1.376-1.344 1.656-.25.282-.5.312-.922.094-.422-.21-1.78-.656-3.39-2.094-1.25-1.125-2.094-2.5-2.344-2.922-.25-.422-.03-.656.188-.875.188-.188.422-.5.625-.75.203-.25.281-.422.421-.703.14-.282.07-.532-.031-.75-.094-.219-.953-2.297-1.312-3.141-.344-.828-.688-.718-.953-.734-.25-.016-.531-.016-.812-.016s-.734.094-1.125.516c-.39.422-1.5 1.468-1.5 3.578s1.531 4.141 1.75 4.422c.219.282 3.078 4.688 7.453 6.578 1.047.453 1.859.719 2.5.922.984.313 1.875.266 2.578.156.797-.125 2.484-1.016 2.828-2 .344-.984.344-1.828.25-2-.094-.172-.375-.281-.797-.5z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

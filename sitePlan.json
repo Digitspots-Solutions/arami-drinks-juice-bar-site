@@ -1,0 +1,42 @@
+{
+  "businessName": "Arami Drinks & Juice Bar",
+  "industry": "Beverage Manufacturing & Retail",
+  "tone": "warm and inviting",
+  "tagline": "Fresh, Natural, Refreshing - Crafted Daily in Eleme",
+  "sections": [
+    {
+      "id": "hero",
+      "name": "Hero",
+      "copy": "Welcome to Arami Drinks & Juice Bar - Where Every Sip Tells a Story of Freshness. Located at Kembere Junction Ekara Onne, Eleme, we craft premium natural drinks and fresh juices that refresh your body and delight your taste buds. Experience the perfect blend of quality, taste, and nutrition in every bottle.",
+      "imagePrompt": "Vibrant Nigerian juice bar counter with colorful fresh tropical fruits (pineapples, oranges, watermelons, mangoes) arranged beautifully, glass bottles filled with bright orange, red and green natural juices catching sunlight, modern clean aesthetic, warm welcoming atmosphere, photorealistic, professional product photography style",
+      "layout": "centered"
+    },
+    {
+      "id": "about",
+      "name": "About Us",
+      "copy": "Arami Drinks & Juice Bar is a trusted beverage manufacturer in Eleme, Rivers State, dedicated to bringing you the finest selection of natural drinks and freshly squeezed juices. From our facility at Kembere Junction Ekara Onne, we source quality local fruits and ingredients to create beverages that are not just delicious, but nutritious. Our commitment is simple: no artificial preservatives, no added sugars unless requested, just pure goodness in every bottle. Whether you're looking for a quick refreshment or bulk orders for events and retail, Arami is your go-to destination for quality you can taste.",
+      "imagePrompt": "Interior of a modern Nigerian beverage production facility, stainless steel equipment, fresh fruits being processed, quality control in action, bright natural lighting, clean hygienic environment, workers in food-grade uniforms, professional manufacturing setup in Rivers State Nigeria, photorealistic documentary style",
+      "layout": "split"
+    },
+    {
+      "id": "services",
+      "name": "Our Products & Services",
+      "copy": "Fresh Fruit Juices: Made-to-order or bottled fresh - orange, pineapple, watermelon, mixed fruit blends, and seasonal specials. Every juice is squeezed fresh daily.\n\nNatural Drinks: Our signature drink blends combine traditional Nigerian flavors with modern taste preferences. Refreshing zobo, ginger drinks, chapman, and more.\n\nBulk Manufacturing: We supply restaurants, hotels, supermarkets, and event centers across Eleme and Port Harcourt with consistent quality beverages at competitive prices.\n\nCustom Blends: Have a specific taste in mind? We create custom juice blends for corporate events, weddings, and special occasions.\n\nRetail & Wholesale: Walk into our bar for a quick refreshing drink or place bulk orders for your business needs. Flexible pricing for all order sizes.",
+      "imagePrompt": "Grid layout of five distinct Nigerian beverage scenes: freshly squeezed orange juice in clear bottles, traditional red zobo drink in pitchers, mixed tropical fruit juice with garnish, bulk beverage bottles arranged for wholesale, custom branded drinks for events, vibrant colors, appetizing presentation, professional food photography",
+      "layout": "grid"
+    },
+    {
+      "id": "contact",
+      "name": "Visit Us Today",
+      "copy": "Ready to taste the Arami difference? Visit our juice bar at Kembere Junction Ekara Onne, Eleme, or call us to place your order. We're open daily and ready to serve you the freshest drinks in town. For bulk orders, corporate inquiries, or custom blends, reach out and let's create something refreshing together. Same-day delivery available for orders within Eleme and environs.",
+      "imagePrompt": "Welcoming storefront of a Nigerian juice bar, bright signage reading 'Arami Drinks & Juice Bar', customers being served at counter, location marker showing Kembere Junction Ekara Onne Eleme, friendly staff, inviting entrance, tropical plants, afternoon sunlight, warm community atmosphere, photorealistic architectural photography",
+      "layout": "centered"
+    }
+  ],
+  "contact": {
+    "phone": "+234 803 972 8284",
+    "email": "info@aramidrinks.ng",
+    "address": "Kembere Junction Ekara Onne, Eleme, Rivers State, Nigeria",
+    "whatsapp": "https://wa.me/2348039728284"
+  }
+}
